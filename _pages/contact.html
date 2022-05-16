@@ -1,0 +1,282 @@
+---
+layout: archive
+permalink: /contact/
+title: "Contact"
+excerpt: "Contact me!"
+author_profile: true
+---
+
+
+<!--<html>
+Old version
+<head>
+    <style>
+        input[type=text],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical
+        }
+
+        input[type=button] {
+            background-color: #959c99;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: fit-content;
+        }
+
+        input[type=button]:hover {
+            background-color: #5f615f;
+        }
+
+        input[type=submit] {
+            background-color: #04AA6D;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        .container {
+            border-radius: 5px;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form id="myForm">
+
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+            <label for="email">Your Email</label>
+            <input type="text" id="email" name="Email" placeholder="Your e-mail..">
+
+            <label for="subject">Subject</label>
+            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+            
+            <input type="submit" onclick="send()" value="Submit">
+            <input type="button" class="restButton" onclick="reset()" value="Reset">
+            </form>
+
+    </div>
+    <script>
+
+        function send() {
+            window.open(getCode());
+        }
+
+        function getSubject() {
+            return 'From ' + document.getElementById("fname").value + ' ' 
+            + document.getElementById("lname").value + " mail: "
+            + document.getElementById("email").value;
+        }
+
+        function getBody() {
+            return document.getElementById("subject").value;
+        }
+
+        function getCode() {
+            return "mailto:toilamanh2002@gmail.com?subject=" + getSubject() + "&body=" + getBody();
+        }
+
+        function reset() {
+            document.getElementById("myForm").reset();
+        }
+
+    </script>
+</body>
+
+</html>-->
+<html>
+
+<head>
+    <style>
+        input[type=text],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical
+        }
+
+
+
+        input[type=button] {
+            background-color: #959c99;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: fit-content;
+        }
+
+        input[type=button]:hover {
+            background-color: #5f615f;
+        }
+
+        input[type=button2] {
+            background-color: #04AA6D;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: fit-content;
+        }
+
+        input[type=button2]:hover {
+            background-color: #45a049;
+        }
+
+        .container {
+            border-radius: 5px;
+            padding: 20px;
+        }
+    </style>
+    <script type="text/javascript">
+        var onloadCallback = function () {
+            grecaptcha.render('html_element', {
+                'sitekey': '6LcOgu8fAAAAAFlxf3RLA3ysXAlfm7uORgMVT6T4'
+            });
+        };
+    </script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <form id="myForm">
+
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+            <label for="email">Your Email</label>
+            <input type="text" id="email" name="Email" placeholder="Your e-mail..">
+
+            <label for="subject">Subject</label>
+            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+            <div id="html_element"></div>
+            <input type="button" onclick="sendCaptcha()" value="Submit">
+            <input type="button" class="restButton" onclick="reset()" value="Reset">
+            <!--<input type="button2" onclick="alert(resentSubject())" value="Submit">-->
+        </form>
+
+    </div>
+    <script type="text/javascript">
+        function getSubject() {
+            return 'Have a new contact from: '
+                + document.getElementById("fname").value + ' '
+                + document.getElementById("lname").value;
+        }
+
+        function resentSubject() {
+            return 'From: Dinh Duy Manh'
+                + '<br />To: ' + document.getElementById("fname").value + ' '
+                + document.getElementById("lname").value
+                + '<br />Hi ' + document.getElementById("fname").value + ' '
+                + document.getElementById("lname").value
+                + '<br />Thanks for contacting me!'
+                + '<br />I will reply you soon'
+                + '<br />Hope you have a good day!'
+                + '<br />Dear!'
+                + '<br />Manh'
+        }
+
+        function getBody() {
+            return "From mail: "
+                + document.getElementById("email").value + '<br />'
+                + document.getElementById("subject").value;
+        }
+
+        function reset() {
+            document.getElementById("myForm").reset();
+        }
+
+        function getMailAddres() {
+            return document.getElementById("email").value;
+        }
+
+        function checkMail() {
+            var inputText = document.getElementById("email").value;
+            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if (inputText.match(mailformat)) {
+                return true;
+            } else {
+                alert("You have entered an invalid email address!");
+                return false;
+            }
+        }
+
+        function sendCaptcha() {
+            if (grecaptcha && grecaptcha.getResponse().length !== 0) {
+                send()
+            } else {
+                alert("Captcha isn't checked");
+            }
+        }
+
+        function send() {
+            if (checkMail()) {
+                sendEmail();
+                resendEmail();
+            }
+        }
+
+        function resendEmail() {
+            Email.send({
+                SecureToken: "23cb0fe7-f0fd-4f44-8f32-768d29f3b5a6",
+                To: getMailAddres(),
+                From: 'toilamanh2002@gmail.com',
+                Subject: 'Thanks for your contact!',
+                Body: resentSubject(),
+            });
+        }
+
+        function sendEmail() {
+            Email.send({
+                SecureToken: "23cb0fe7-f0fd-4f44-8f32-768d29f3b5a6",
+                To: 'toilamanh2002@gmail.com',
+                From: 'toilamanh2002@gmail.com',
+                Subject: getSubject(),
+                Body: getBody(),
+            }).then(
+                message => alert("mail sent successfully")
+            );
+        }
+
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
+    </script>
+</body>
+
+</html>

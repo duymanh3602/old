@@ -1,0 +1,370 @@
+---
+layout: stocks
+permalink: /stocks/
+title: "Stocks (developing)"
+toc: true
+---
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" charset="utf-8"></script>
+  <style>
+    @font-face {
+      font-family: 'Oswald';
+      font-style: normal;
+      font-weight: 400;
+      src: url(https://fonts.gstatic.com/s/oswald/v47/TK3_WkUHHAIjg75cFRf3bXL8LICs1_FvsUtiZTaR.woff2) format('woff2');
+      unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+    }
+
+    /* cyrillic */
+    @font-face {
+      font-family: 'Oswald';
+      font-style: normal;
+      font-weight: 400;
+      src: url(https://fonts.gstatic.com/s/oswald/v47/TK3_WkUHHAIjg75cFRf3bXL8LICs1_FvsUJiZTaR.woff2) format('woff2');
+      unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+    }
+
+    /* vietnamese */
+    @font-face {
+      font-family: 'Oswald';
+      font-style: normal;
+      font-weight: 400;
+      src: url(https://fonts.gstatic.com/s/oswald/v47/TK3_WkUHHAIjg75cFRf3bXL8LICs1_FvsUliZTaR.woff2) format('woff2');
+      unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+    }
+
+    /* latin-ext */
+    @font-face {
+      font-family: 'Oswald';
+      font-style: normal;
+      font-weight: 400;
+      src: url(https://fonts.gstatic.com/s/oswald/v47/TK3_WkUHHAIjg75cFRf3bXL8LICs1_FvsUhiZTaR.woff2) format('woff2');
+      unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+
+    /* latin */
+    @font-face {
+      font-family: 'Oswald';
+      font-style: normal;
+      font-weight: 400;
+      src: url(https://fonts.gstatic.com/s/oswald/v47/TK3_WkUHHAIjg75cFRf3bXL8LICs1_FvsUZiZQ.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    html,
+    body {
+      height: auto;
+      font-family: 'Oswald', sans-serif;
+      font-size: 20px;
+    }
+
+    body {
+      background: rgb(239, 239, 239);
+      background: url('background.jpg');
+      background-size: fill;
+    }
+
+    hr {
+      width: 90%;
+    }
+
+    .container {
+      /*background-color: rgba(0, 5, 58, 1);*/
+      background-color: rgba(0, 33, 86, 0.9);
+      opacity: 0.9;
+      color: white;
+      margin: 5% auto;
+      width: 66%;
+      height: auto;
+      box-shadow: 5px 5px 2px 1px rgba(0, 0, 0, .5);
+      border-radius: 5px;
+    }
+
+    .header {
+      padding: 34px 34px 0px 34px;
+      margin-left: 15px;
+      font-size: 32px;
+    }
+
+    .indices {
+      padding: 34px;
+      margin-left: 15px;
+    }
+
+    .stock {
+      display: flex;
+      padding-bottom: 5px;
+    }
+
+    .name,
+    .price,
+    .change {
+      flex: 1;
+    }
+
+    .lastUpdated {
+      margin-left: 15px;
+      padding: 34px 34px 10px 34px;
+      font-size: 18px;
+    }
+
+    .closeTime {
+      margin-left: 15px;
+      padding: 0px 34px 34px 34px;
+      font-size: 18px;
+    }
+
+    .searchbar {
+      width: 50%;
+      height: 30px;
+      padding-left: 16px;
+      margin: 5% 25% 0 25%;
+      font-size: 16px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #search,
+    #viewChart {
+      margin-left: 15px;
+      padding-left: 34px;
+      color: white;
+    }
+
+    #search:hover,
+    #viewChart:hover {
+      color: rgb(148, 160, 181);
+    }
+
+    #stockChart {
+      margin-left: 15%;
+    }
+  </style>
+  <title>Stocks</title>
+</head>
+
+<body>
+  <div class="container">
+    <input type="text" value="" class="searchbar" placeholder="Enter stock symbol">
+    <div class="header">
+      <div class="stock">
+        <div class="name"></div>
+        <div class="price"></div>
+        <div class="change"></div>
+      </div>
+    </div>
+    <hr>
+    <a href="#" id="search">Search for stocks</a>
+    <!--<div class="indices">
+      <div id="djia" class="stock">
+        <div class="name">DJIA</div>
+        <div class="price"></div>
+        <div class="change"></div>
+      </div>
+      <div id="gspc" class="stock">
+        <div class="name">S&P 500</div>
+        <div class="price"></div>
+        <div class="change"></div>
+      </div>
+      <div id="ixic" class="stock">
+        <div class="name">NASDAQ</div>
+        <div class="price"></div>
+        <div class="change"></div>
+      </div>
+    </div>-->
+    <a href="#" id="viewChart">View chart</a>
+    <div id="stockChart">
+      <div id="tv-medium-widget-5e6f9"></div>
+    </div>
+    <div class="lastUpdated"></div>
+    <div class="closeTime"></div>
+  </div>
+  <script type="text/javascript" charset="utf-8">
+    let search;
+    const lastUpdated = new Date().toLocaleString();
+
+    $(document).ready(function () {
+      search = "AMID";
+      getStockInfo();
+      getIndices();
+      getStockChart();
+
+      $(".lastUpdated").text(`Last updated: ${lastUpdated}`);
+      
+      
+      $("#search").on("click", function () {
+        $(".searchbar").toggleClass("hidden");
+      });
+      
+
+      $("#viewChart").on("click", function () {
+        $("#stockChart").toggleClass("hidden");
+      });
+
+      $(".searchbar").keypress(function (e) {
+        if (e.which == 13) {
+          search = $(".searchbar").val();
+          getStockInfo();
+          getStockChart();
+        }
+      });
+    })
+
+    function getStockInfo() {
+      data = $.ajax({
+        type: "GET",
+        url: `https://api.iextrading.com/1.0/stock/${search}/quote`,
+        dataType: "json",
+        success: function (data) {
+          let name = data.symbol;
+          let price = rounder(data.latestPrice, 2);
+          let change = data.changePercent;
+          let closeTime = new Date(data.closeTime).toLocaleString();
+
+          $(".header .name").text(name);
+          $(".header .price").text(price);
+          $(".header .change").text((rounder(change, 4) * 100).toFixed(2) + "%");
+          $(".closeTime").text(`Trading Window Closes: ${closeTime}`);
+
+          if (change >= 0) {
+            $(".header .change").css("color", "green");
+            $(".header .change").prepend("&#x25B2;");
+          } else {
+            $(".header .change").css("color", "red");
+            $(".header .change").prepend("&#x25BC;");
+          }
+        }
+      });
+    }
+
+    function getIndices() {
+      data = $.ajax({
+        type: "GET",
+        url: "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=^DJI&apikey=D82RGKW7PC6AAW7D",
+        dataType: "json",
+        success: function (data) {
+          let lastRefreshed = data['Meta Data']['3. Last Refreshed'];
+          let price = rounder(data["Time Series (Daily)"][lastRefreshed]["1. open"], 2);
+          let yPrice = data["Time Series (Daily)"][getYesterdayDate()]["1. open"];
+          let change = (rounder(((price - yPrice) / Math.abs(price)), 4) * 100).toFixed(2) + "%";
+
+          $("#djia .price").text(price);
+          $("#djia .change").text(change);
+
+          if (change >= 0) {
+            $("#djia .change").css("color", "green");
+            $("#djia .change").prepend("&#x25B2;");
+          } else {
+            $("#djia .change").css("color", "red");
+            $("#djia .change").prepend("&#x25BC;");
+          }
+        }
+      });
+
+      data = $.ajax({
+        type: "GET",
+        url: "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=^GSPC&apikey=D82RGKW7PC6AAW7D",
+        dataType: "json",
+        success: function (data) {
+          let lastRefreshed = data['Meta Data']['3. Last Refreshed'];
+          let price = rounder(data["Time Series (Daily)"][lastRefreshed]["1. open"], 2);
+          let yPrice = rounder(data["Time Series (Daily)"][getYesterdayDate()]["1. open"], 2);
+          let change = (rounder(((price - yPrice) / Math.abs(price)), 4) * 100).toFixed(2) + "%";
+
+          $("#gspc .price").text(price);
+          $("#gspc .change").text(change);
+
+          if (change >= 0) {
+            $("#gspc .change").css("color", "green");
+            $("#gspc .change").prepend("&#x25B2;");
+          } else {
+            $("#gspc .change").css("color", "red");
+            $("#gspc .change").prepend("&#x25BC;");
+          }
+        }
+      });
+
+      data = $.ajax({
+        type: "GET",
+        url: "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=^IXIC&apikey=D82RGKW7PC6AAW7D",
+        dataType: "json",
+        success: function (data) {
+          let lastRefreshed = data['Meta Data']['3. Last Refreshed'];
+          let price = rounder(data["Time Series (Daily)"][lastRefreshed]["1. open"], 2);
+          let yPrice = rounder(data["Time Series (Daily)"][getYesterdayDate()]["1. open"], 2);
+          let change = (rounder(((price - yPrice) / Math.abs(price)), 4) * 100).toFixed(2) + "%";
+
+          $("#ixic .price").text(price);
+          $("#ixic .change").text(change);
+
+          if (change >= 0) {
+            $("#ixic .change").css("color", "green");
+            $("#ixic .change").prepend("&#x25B2;");
+          } else {
+            $("#ixic .change").css("color", "red");
+            $("#ixic .change").prepend("&#x25BC;");
+          }
+        }
+      });
+    }
+
+    function getStockChart() {
+      new TradingView.MediumWidget({
+        "container_id": "tv-medium-widget-5e6f9",
+        "symbols": [
+          [
+            "Google",
+            search
+          ]
+        ],
+        "greyText": "Quotes by",
+        "gridLineColor": "#e9e9ea",
+        "fontColor": "#83888D",
+        "underLineColor": "#dbeffb",
+        "trendLineColor": "#4bafe9",
+        "width": "80%",
+        "height": "400px",
+        "locale": "en"
+      });
+    }
+
+    function formatDate() {
+      var d = new Date(),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+      if (month.length < 2) month = '0' + month;
+      if (day.length < 2) day = '0' + day;
+
+      return [year, month, day].join('-');
+    }
+
+    function getYesterdayDate() {
+      let d = new Date(),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate() - 1,
+        year = d.getFullYear();
+
+      if (month.length < 2) month = '0' + month;
+      if (day.length < 2) day = '0' + day;
+
+      return [year, month, day].join('-');
+    }
+
+    function rounder(number, precision) {
+      let factor = Math.pow(10, precision);
+      return Math.round(number * factor) / factor;
+    }
+
+    setInterval(getStockInfo, 10000);
+  </script>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+</body>
+
+</html>
