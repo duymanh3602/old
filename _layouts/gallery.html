@@ -9,14 +9,6 @@ layout: archive
     <li>
       <a href="#{{ year.name }}">
         <strong>{{ year.name }}</strong> <span class="taxonomy__count">{{ year.items | size }}</span>
-          {% assign postsInMonth = year.items | where_exp: "item", "item.hidden != true" | group_by_exp: 'post', 'post.date | date: "%B"' %}
-          {% for month in postsInMonth %}
-            <li>
-              <a href="#{{ month.name }}">
-                <strong>{{ month.name }}</strong> <span class="taxonomy__count">{{ month.items | size }}</span>
-              </a>
-            </li>
-          {% endfor %}
       </a>
     </li>
   {% endfor %}
