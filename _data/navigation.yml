@@ -10,8 +10,8 @@ main:
     url: /contact/
   - title: "Gallery"
     url: /gallery/
-  - title: "Chat-bot"
-    url: /bot/
+  #- title: "Chat-bot"
+    #url: /bot/
   
   #- title: "Stocks"
     #url: /stocks/
