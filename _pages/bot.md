@@ -1,6 +1,6 @@
 ---
 layout: archive
 permalink: /bot/
-title: "Chat bot (developing)"
+title: "Chat-bot (developing)"
 author_profile: false
 ---
