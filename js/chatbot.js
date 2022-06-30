@@ -1,8 +1,3 @@
-//links
-//http://eloquentjavascript.net/09_regexp.html
-//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
-
-
 var messages = [], //array that hold the record of each string in chat
   lastUserMessage = "", //keeps track of the most recent input string from the user
   botMessage = "", //var keeps track of what the chatbot is going to say
@@ -51,7 +46,7 @@ function newEntry() {
     //sets the chat box to be clear
     document.getElementById("chatbox").value = "";
     //adds the value of the chatbox to the array messages
-    messages.push(lastUserMessage);
+    messages.push("<b>" + You + ":</b> " + lastUserMessage);
     //Speech(lastUserMessage);  //says what the user typed outloud
     //sets the variable botMessage in response to lastUserMessage
     chatbotResponse();
