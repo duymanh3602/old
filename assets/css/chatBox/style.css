@@ -1,11 +1,21 @@
-body {
+
+
+.chatBubble .body {
     margin: 0;
     padding: 0;
     font-family: "Lato", sans-serif;
     background-color: #f6f7f9;
 }
 
-body {
+.chatBubble .chatBubble.allbody {
+    top: 0;
+    bottom:0;
+    position:fixed;
+    overflow-y:scroll;
+    overflow-x:hidden;
+}
+
+.chatBubble .body {
     display: grid;
     grid-auto-flow: column;
     align-items: center;
@@ -15,13 +25,13 @@ body {
     min-height: 100vh;
 }
 
-h1 {
+.chatBubble h1 {
     margin: 0;
     font-size: 16px;
     line-height: 1;
 }
 
-button {
+.chatBubble button {
     color: inherit;
     background-color: transparent;
     border: 0;
@@ -30,7 +40,7 @@ button {
 }
 
 
-button.chatbox-open {
+.chatBubble chatbox-open {
     position: fixed;
     bottom: 0;
     right: 0;
@@ -47,7 +57,7 @@ button.chatbox-open {
     margin: 16px;
 }
 
-button.chatbox-close {
+.chatBubble .chatBubble.button.chatbox-close {
     position: fixed;
     bottom: 0;
     right: 0;
@@ -65,7 +75,7 @@ button.chatbox-close {
     margin: 16px calc(2 * 16px + 52px) 16px 16px;
 }
 
-textarea {
+.chatBubble chatBubble.textarea {
     box-sizing: border-box;
     width: 100%;
     margin: 0;
@@ -82,11 +92,11 @@ textarea {
     overflow: hidden;
 }
 
-textarea::placeholder {
+.chatBubble .chatBubble.textarea::placeholder {
     color: #888;
 }
 
-.chatbox-popup {
+.chatBubble .chatBubble.chatbox-popup {
     display: flex;
     position: absolute;
     box-shadow: 5px 5px 25px 0 rgba(46, 61, 73, 0.2);
@@ -100,7 +110,7 @@ textarea::placeholder {
     border-radius: 16px;
 }
 
-.chatbox-popup .chatbox-popup__header {
+.chatBubble .chatBubble.chatbox-popup .chatbox-popup__header {
     box-sizing: border-box;
     display: flex;
     width: 100%;
@@ -113,14 +123,14 @@ textarea::placeholder {
     border-top-left-radius: 12px;
 }
 
-.chatbox-popup .chatbox-popup__header .chatbox-popup__avatar {
+.chatBubble .chatBubble.chatbox-popup .chatbox-popup__header .chatbox-popup__avatar {
     margin-top: -32px;
     background-color: #0360a5;
     border: 5px solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;
 }
 
-.chatbox-popup .chatbox-popup__main {
+.chatBubble .chatBubble.chatbox-popup .chatbox-popup__main {
     box-sizing: border-box;
     width: 100%;
     padding: calc(2 * 16px) 16px;
@@ -129,7 +139,7 @@ textarea::placeholder {
     text-align: center;
 }
 
-.chatbox-popup .chatbox-popup__footer {
+.chatBubble .chatBubble.chatbox-popup .chatbox-popup__footer {
     box-sizing: border-box;
     display: flex;
     width: 100%;
@@ -141,7 +151,7 @@ textarea::placeholder {
     border-bottom-left-radius: 12px;
 }
 
-.chatbox-panel {
+.chatBubble .chatBubble.chatbox-panel {
     display: flex;
     position: absolute;
     box-shadow: 5px 5px 25px 0 rgba(46, 61, 73, 0.2);
@@ -154,7 +164,7 @@ textarea::placeholder {
     background-color: #fff;
 }
 
-.chatbox-panel .chatbox-panel__header {
+.chatBubble .chatBubble.chatbox-panel .chatbox-panel__header {
     box-sizing: border-box;
     display: flex;
     width: 100%;
@@ -166,7 +176,7 @@ textarea::placeholder {
     flex: 0 0 auto;
 }
 
-.chatbox-panel .chatbox-panel__main {
+.chatBubble .chatBubble.chatbox-panel .chatbox-panel__main {
     box-sizing: border-box;
     width: 100%;
     padding: calc(2 * 16px) 16px;
@@ -176,7 +186,7 @@ textarea::placeholder {
     flex: 1 1 auto;
 }
 
-.chatbox-panel .chatbox-panel__footer {
+.chatBubble .chatBubble.chatbox-panel .chatbox-panel__footer {
     box-sizing: border-box;
     display: flex;
     width: 100%;
@@ -187,7 +197,7 @@ textarea::placeholder {
     flex: 0 0 auto;
 }
 
-#chatborder {
+.chatBubble .chatBubble#chatborder {
     border-style: solid;
     background-color: #f6f9f6;
     border-width: 3px;
@@ -202,7 +212,7 @@ textarea::placeholder {
     border-radius: 15px;
 }
 
-.chat-ui {
+.chatBubble .chatBubble.chat-ui {
     --chat-ui_theme: hsl(200, 100%, 50%);
     --chat-ui_theme_compliment: color(var(--chat-ui_theme) hue(+200));
     --chat-ui_theme_text-color: white;
@@ -225,7 +235,7 @@ textarea::placeholder {
     resize: both;
 }
 
-.chat-titlebar {
+.chatBubble .chatBubble.chat-titlebar {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -247,7 +257,7 @@ textarea::placeholder {
     transition: transform 0.15s var(--chat-ui_easing-quick)
 }
 
-.chat-titlebar>h5 {
+.chatBubble .chatBubble.chat-titlebar>h5 {
     font-size: 1rem;
     font-weight: normal;
     line-height: 1.1;
@@ -255,7 +265,7 @@ textarea::placeholder {
     margin: 0;
 }
 
-.chat-avatar {
+.chatBubble .chatBubble.chat-avatar {
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
@@ -264,14 +274,14 @@ textarea::placeholder {
     display: inline-block
 }
 
-.chat-avatar>img {
+.chatBubble .chatBubble.chat-avatar>img {
     width: 100%;
     height: 100%;
     -o-object-fit: cover;
     object-fit: cover;
 }
 
-.chat-scrollview {
+.chatBubble .chatBubble.chat-scrollview {
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
@@ -286,7 +296,7 @@ textarea::placeholder {
     bottom: 0;
 }
 
-.chat-messagelist {
+.chatBubble .chatBubble.chat-messagelist {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -297,12 +307,12 @@ textarea::placeholder {
     min-height: 100%
 }
 
-.chat-messagelist>.chat-cluster:last-child {
+.chatBubble .chatBubble.chat-messagelist>.chat-cluster:last-child {
     scroll-snap-align: end;
     scroll-margin-block-end: 5rem;
 }
 
-.chat-cluster {
+.chatBubble .chatBubble.chat-cluster {
     margin: 0.25rem 3rem 0.75rem 0.5rem;
     display: flex;
     flex-wrap: wrap;
@@ -310,23 +320,23 @@ textarea::placeholder {
     align-items: flex-end
 }
 
-.chat-cluster[mine] {
+.chatBubble .chatBubble.chat-cluster[mine] {
     margin-left: 3rem;
     margin-right: 0.5rem;
     align-self: flex-end
 }
 
-.chat-cluster[mine]>section {
+.chatBubble .chatBubble.chat-cluster[mine]>section {
     align-items: flex-end;
 }
 
-.chat-cluster>.chat-avatar {
+.chatBubble .chatBubble.chat-cluster>.chat-avatar {
     margin-right: 0.5rem;
     bottom: 1rem;
     position: sticky;
 }
 
-.chat-cluster>section {
+.chatBubble .chatBubble.chat-cluster>section {
     flex: 2;
     display: flex;
     flex-wrap: wrap;
@@ -334,14 +344,14 @@ textarea::placeholder {
     flex-direction: column
 }
 
-.chat-cluster>section>h3 {
+.chatBubble .chatBubble.chat-cluster>section>h3 {
     margin: 0 0 0 0.7rem;
     font-size: 0.7rem;
     font-weight: lighter;
     color: hsl(0, 0%, 60%);
 }
 
-.chat-message {
+.chatBubble .chatBubble.chat-message {
     background-attachment: fixed;
     background-image: linear-gradient(var(--chat-ui_theme), 30%, hotpink);
     background-size: 100% 120%;
@@ -353,34 +363,34 @@ textarea::placeholder {
     border-radius: 0.25rem 1rem 1rem 0.25rem
 }
 
-.chat-message:first-of-type {
+.chatBubble .chatBubble.chat-message:first-of-type {
     border-radius: 1rem 1rem 1rem 0.25rem;
 }
 
-.chat-message:not(:first-child) {
+.chatBubble .chatBubble.chat-message:not(:first-child) {
     margin-top: 3px;
 }
 
-[mine] .chat-message {
+.chatBubble [mine] .chat-message {
     background: var(--chat-ui_message_bg2);
     color: var(--chat-ui_message_text-color);
     border-radius: 1rem 0.25rem 0.25rem 1rem;
 }
 
-.chat-authoring {
+.chatBubble .chatBubble.chat-authoring {
     background: white;
 }
 
-.chat-authoring:focus {
+.chatBubble .chatBubble.chat-authoring:focus {
     width: calc(100% - 1rem);
     outline: none;
 }
 
-.chat-authoring:empty:not(:focus) {
+.chatBubble .chatBubble.chat-authoring:empty:not(:focus) {
     width: 100%;
 }
 
-.chat-authoring:empty::after {
+.chatBubble .chatBubble.chat-authoring:empty::after {
     content: "Say Something..";
 }
 
