@@ -13,7 +13,7 @@ main:
   #- title: "Chat-bot"
     #url: /bot/
   - title: "Test"
-    url: /test/
+    url: /testlayout/
   
   #- title: "Stocks"
     #url: /stocks/
