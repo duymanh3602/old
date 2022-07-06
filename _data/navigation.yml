@@ -12,6 +12,8 @@ main:
     url: /gallery/
   #- title: "Chat-bot"
     #url: /bot/
+  - title: "Test"
+    url: /test/
   
   #- title: "Stocks"
     #url: /stocks/
